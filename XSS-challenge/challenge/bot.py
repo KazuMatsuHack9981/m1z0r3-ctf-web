@@ -26,7 +26,7 @@ def visit_report(url):
     options.add_argument('user-agent=BugHTB/1.0')
     browser = webdriver.Chrome('chromedriver', options=options, service_args=['--verbose', '--log-path=/tmp/chromedriver.log'])
 
-    browser.get('http://127.0.0.1:3003/')
+    browser.get('https://p3.problem.web.m1z0r3.org/')
 
     browser.add_cookie({
         'name': 'flag',

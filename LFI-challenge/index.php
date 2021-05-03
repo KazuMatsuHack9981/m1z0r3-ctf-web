@@ -1,6 +1,6 @@
 <html>
 	<body>
-		<h1>LFI me</h1>
+		<h1>English or Japanese page</h1>
     <div>
       <ul>
         <li><a href="?lang=en.php">English page</a></li>

@@ -1,0 +1,41 @@
+version: '3'
+services:
+  app:
+    build: ./
+    container_name: nosqli-web
+    ports:
+      - "3004:3000"
+    restart: always
+    working_dir: /app
+    tty: true
+    volumes:
+      - ./src:/app
+    env_file:
+      - ./secret_file/db.env
+    command: bash
+    networks:
+      - mizore-network
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    container_name: nosqli-db
+    ports:
+      - "3005:27017"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    volumes:
+      - ./data/db:/data/db
+      - ./secret_file/db_init/:/docker-entrypoint-initdb.d
+    env_file:
+      - ./secret_file/db.env
+    command:
+      - mongod
+    networks:
+      - mizore-network
+networks:
+  mizore-network:
+    external: true

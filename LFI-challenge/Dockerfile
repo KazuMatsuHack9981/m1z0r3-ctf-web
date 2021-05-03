@@ -1,6 +1,6 @@
 FROM php:7.2-apache
 
-COPY lfi-me.php /var/www/html
+COPY index.php  /var/www/html
 RUN  mkdir      /var/www/html/pages
 COPY pages/     /var/www/html/pages
 COPY flag.txt   /var/www
